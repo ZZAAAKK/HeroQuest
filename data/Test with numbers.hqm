@@ -1,0 +1,30 @@
+{
+  "title": "Test with numbers",
+  "description": "",
+  "notes": "",
+  "width": 26,
+  "height": 19,
+  "cells": [
+    {
+      "x": 11,
+      "y": 9,
+      "type": "Dice",
+      "angle": 0,
+      "diceValue": "3"
+    },
+    {
+      "x": 12,
+      "y": 11,
+      "type": "Dice",
+      "angle": 0,
+      "diceValue": "69"
+    },
+    {
+      "x": 11,
+      "y": 7,
+      "type": "Dice",
+      "angle": 0,
+      "diceValue": "2 / 12"
+    }
+  ]
+}

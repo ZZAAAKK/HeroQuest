@@ -1,0 +1,109 @@
+{
+  "title": "",
+  "description": "",
+  "notes": "",
+  "width": 26,
+  "height": 19,
+  "cells": [
+    {
+      "x": 13,
+      "y": 4,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 14,
+      "y": 4,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 11,
+      "y": 5,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 12,
+      "y": 5,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 15,
+      "y": 5,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 11,
+      "y": 6,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 15,
+      "y": 6,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 16,
+      "y": 6,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 11,
+      "y": 7,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 16,
+      "y": 7,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 11,
+      "y": 8,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 16,
+      "y": 8,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 11,
+      "y": 9,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 12,
+      "y": 9,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 13,
+      "y": 9,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 14,
+      "y": 9,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 15,
+      "y": 9,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 16,
+      "y": 9,
+      "type": "OutOfBounds"
+    },
+    {
+      "x": 14,
+      "y": 10,
+      "type": "OutOfBounds"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 let mapData;
+let isDragging = false;
 
 (() => {
     mapData = createEmptyMap();
@@ -52,6 +53,62 @@ let mapData;
             if (e.key === 'd' || e.key === 'Escape') {
                 const activeCells = document.querySelectorAll('div.cell.active');
                 activeCells.forEach(deactivateCell);
+            }
+
+            if (e.key === 'n') {
+                const activeCells = document.querySelectorAll('div.cell.active');
+
+                if (activeCells.length === 0) return;
+
+                const textInput = document.createElement('input');
+                textInput.type = 'text';
+                textInput.style.position = 'fixed';
+                textInput.style.top = '100px';
+                document.body.appendChild(textInput);
+                textInput.focus();
+
+                textInput.onblur = () => {
+                    const value = textInput.value;
+                    document.body.removeChild(textInput);
+
+                    activeCells.forEach(cell => {
+                        const x = parseInt(cell.getAttribute('data-col'));
+                        const y = parseInt(cell.getAttribute('data-row'));
+
+                        if (textInput !== null) {
+                            const diceValue = value.trim();
+
+                            const diceCell = document.createElement('div');
+                            diceCell.className = 'dice-cell' + (diceValue.length > 2 ? ' small-font' : '');
+                            diceCell.textContent = diceValue;
+
+                            const existingImg = cell.querySelector('img');
+                            if (existingImg) {
+                                cell.removeChild(existingImg);
+                            }
+
+                            const filteredCells = mapData.cells.filter(c => parseInt(c.x) === x && parseInt(c.y) === y);
+                            mapData.cells = mapData.cells.filter(c => !filteredCells.includes(c));
+                            mapData.cells.push({ x: x, y: y, type: 'Dice', angle: 0, diceValue: diceValue });
+
+                            cell.appendChild(diceCell);
+                        }
+
+                        cell.classList.remove('active');
+                    });
+                }
+            }
+
+            if (e.key === 'o') {
+                const activeCells = document.querySelectorAll('div.cell.active');
+
+                activeCells.forEach(cell => {
+                    const x = parseInt(cell.getAttribute('data-col'));
+                    const y = parseInt(cell.getAttribute('data-row'));
+                    cell.classList.add('out-of-bounds');
+                    mapData.cells.push({ x: x, y: y, type: 'OutOfBounds' });
+                    deactivateCell(cell);
+                });
             }
         }
 
@@ -132,7 +189,7 @@ let mapData;
         specialIcons.forEach(icon => {
             const iconElement = document.createElement('img');
             iconElement.src = `images/special/${icon}`;
-            iconElement.title = icon.replace('.png', '');
+            iconElement.title = (icon === 'Dice.png' ? 'Dice Roll' : icon.replace('.png', ''));
 
             iconElement.onclick = () => { addGridTile(iconElement.title, iconElement.src, null); };
 
@@ -209,6 +266,15 @@ let mapData;
             iconElement.onclick = () => { addGridTile(iconElement.title, iconElement.src, null); };
 
             furniturePicker.appendChild(iconElement);
+        });
+    }
+
+    function activateCell(cell) {
+        cell.classList.add('active');
+
+        const tiles = cell.querySelectorAll('img, .dice-cell');
+        tiles.forEach(tile => {
+            tile.style.opacity = '0.3';
         });
     }
 
@@ -340,6 +406,22 @@ let mapData;
         }
 
         grid.id = 'grid';
+
+        grid.onmousedown = () => {
+            isDragging = true;
+        }
+
+        grid.onmouseup = () => {
+            isDragging = false;
+        }
+
+        grid.onmousemove = (e) => {
+            if (isDragging) {
+                const cell = document.elementFromPoint(e.clientX, e.clientY);
+                activateCell(cell);
+            }
+        }
+
         app.appendChild(grid);
 
         function cellCallback(cell) {
@@ -393,14 +475,14 @@ let mapData;
             const y = parseInt(cell.y);
             const src = cell.src;
             const angle = cell.angle || 0;
-            const title = src.split('/').find(x => x.endsWith('.png')).replace('.png', '');
+            const title = src?.split('/').find(x => x.endsWith('.png')).replace('.png', '') || cell.type;
             const tileCells = cell.cellSpan?.map(c => {
                 const col = parseInt(c.x);
                 const row = parseInt(c.y);
                 return Array.from(cells).find(cellEl => parseInt(cellEl.getAttribute('data-col')) === col && parseInt(cellEl.getAttribute('data-row')) === row);
             }) || [Array.from(cells).find(c => parseInt(c.getAttribute('data-col')) === x && parseInt(c.getAttribute('data-row')) === y)];
 
-            addGridTile(title, src, tileCells, angle, true);
+            addGridTile(title, src, tileCells, angle, true, cell);
         });
     }
 
@@ -414,8 +496,15 @@ let mapData;
         }
     }
 
-    function addGridTile(type, src, cells, angle, isLoading = false) {
+    function addGridTile(type, src, cells, angle, isLoading = false, cellData = null) {
         cells = cells || document.querySelectorAll('div.cell.active');
+
+        if (type === 'OutOfBounds') {
+            cells.forEach(cell => {
+                cell.classList.add('out-of-bounds');
+            });
+            return;
+        }
 
         if (type === 'Door' && cells.length === 2) {
             const dx = Math.abs(parseInt(cells[0].getAttribute('data-col')) - parseInt(cells[1].getAttribute('data-col')));
@@ -432,9 +521,9 @@ let mapData;
                     borderedCell.appendChild(furnitureIcon);
 
                     if (!isLoading) {
-                        mapData.cells.push({ 
-                            x: borderedCell.getAttribute('data-col'), 
-                            y: borderedCell.getAttribute('data-row'), 
+                        mapData.cells.push({
+                            x: borderedCell.getAttribute('data-col'),
+                            y: borderedCell.getAttribute('data-row'),
                             src: src,
                             cellSpan: Array.from(cells).map(c => ({ x: c.getAttribute('data-col'), y: c.getAttribute('data-row') }))
                         });
@@ -452,9 +541,9 @@ let mapData;
                     borderedCell.appendChild(furnitureIcon);
 
                     if (!isLoading) {
-                        mapData.cells.push({ 
-                            x: borderedCell.getAttribute('data-col'), 
-                            y: borderedCell.getAttribute('data-row'), 
+                        mapData.cells.push({
+                            x: borderedCell.getAttribute('data-col'),
+                            y: borderedCell.getAttribute('data-row'),
                             src: src,
                             cellSpan: Array.from(cells).map(c => ({ x: c.getAttribute('data-col'), y: c.getAttribute('data-row') }))
                         });
@@ -472,38 +561,48 @@ let mapData;
                     cell.removeChild(cell.firstChild);
                 }
 
-                const furnitureIcon = document.createElement('img');
-                furnitureIcon.src = src;
+                if (type === 'Dice') {
+                    const diceValue = cellData?.diceValue || '';
 
-                furnitureIcon.style.transformOrigin = '0 0';
-                switch (angle) {
-                    case 0:
-                        furnitureIcon.style.transform = 'rotate(0deg)';
-                        break;
-                    case 90:
-                        furnitureIcon.style.transform = 'rotate(90deg) translate(0, -100%)';
-                        break;
-                    case 180:
-                        furnitureIcon.style.transform = 'rotate(180deg) translate(-100%, -100%)';
-                        break;
-                    case 270:
-                        furnitureIcon.style.transform = 'rotate(270deg) translate(-100%, 0)';
-                        break;
+                    const diceCell = document.createElement('div');
+                    diceCell.className = 'dice-cell' + (diceValue.length > 2 ? ' small-font' : '');
+                    diceCell.textContent = diceValue;
+                    cell.appendChild(diceCell);
                 }
+                else {
+                    const furnitureIcon = document.createElement('img');
+                    furnitureIcon.src = src;
 
-                const probe = new Image();
-                probe.src = src;
-                probe.onload = () => {
-                    const w = probe.naturalWidth;
-                    const h = probe.naturalHeight;
-                    const displayW = Math.round(32 * (w / 256));
-                    const displayH = Math.round(32 * (h / 256));
-                    furnitureIcon.style.width = `${displayW}px`;
-                    furnitureIcon.style.height = `${displayH}px`;
-                };
+                    furnitureIcon.style.transformOrigin = '0 0';
+                    switch (angle) {
+                        case 0:
+                            furnitureIcon.style.transform = 'rotate(0deg)';
+                            break;
+                        case 90:
+                            furnitureIcon.style.transform = 'rotate(90deg) translate(0, -100%)';
+                            break;
+                        case 180:
+                            furnitureIcon.style.transform = 'rotate(180deg) translate(-100%, -100%)';
+                            break;
+                        case 270:
+                            furnitureIcon.style.transform = 'rotate(270deg) translate(-100%, 0)';
+                            break;
+                    }
 
-                cell.appendChild(furnitureIcon);
-                cell.classList.remove('active');
+                    const probe = new Image();
+                    probe.src = src;
+                    probe.onload = () => {
+                        const w = probe.naturalWidth;
+                        const h = probe.naturalHeight;
+                        const displayW = Math.round(32 * (w / 256));
+                        const displayH = Math.round(32 * (h / 256));
+                        furnitureIcon.style.width = `${displayW}px`;
+                        furnitureIcon.style.height = `${displayH}px`;
+                    };
+
+                    cell.appendChild(furnitureIcon);
+                    cell.classList.remove('active');
+                }
 
                 if (!isLoading) {
                     mapData.cells.push({ x: cell.getAttribute('data-col'), y: cell.getAttribute('data-row'), src: src, angle: angle });
