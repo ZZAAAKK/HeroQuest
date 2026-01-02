@@ -19,9 +19,10 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "com.broswritingcodeandstuff.heroquest",
+    "appId": "com.zzaaakk.heroquest",
     "files": [
-      "src/**/*"
+      "src/**/*",
+      "data/**/*"
     ],
     "directories": {
       "buildResources": "assets"
