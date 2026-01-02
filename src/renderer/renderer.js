@@ -233,6 +233,9 @@ let mapData;
     window.api.onNew(() => {
         mapData = createEmptyMap();
 
+        const title = document.getElementById('title');
+        title.value = '';
+
         const description = document.getElementById('description');
         description.value = '';
 
