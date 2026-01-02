@@ -1,5 +1,6 @@
 {
   "name": "heroquest",
+  "title": "HeroQuest Map Editor",
   "version": "1.0.0",
   "type": "module",
   "description": "",
@@ -18,7 +19,7 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "com.yourdomain.heroquest",
+    "appId": "com.broswritingcodeandstuff.heroquest",
     "files": [
       "src/**/*"
     ],

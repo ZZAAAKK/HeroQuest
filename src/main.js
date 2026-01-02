@@ -26,7 +26,7 @@ function createWindow() {
 
     mainWindow.loadFile(path.join(__dirname, 'renderer/index.html'));
     createMenu(mainWindow);
-    // mainWindow.webContents.openDevTools(); // Open DevTools to capture preload console output
+    mainWindow.webContents.openDevTools(); // Open DevTools to capture preload console output
 }
 
 function createMenu(mainWindow) {
