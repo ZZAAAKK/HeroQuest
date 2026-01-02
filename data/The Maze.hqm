@@ -1,0 +1,356 @@
+{
+  "title": "The Maze",
+  "description": "This will be your final test before you set forth. Be sure to use all the skills that you have been taught. You must attempt to find your way out. Several Monsters have been placed in the Maze. They will try to stop you, so take care. Whoever finds his way out first will be rewarded with 100 gold coins. this may be used to buy equipment for the adventures to come.",
+  "notes": "At the start of the game put out everything the players can see. remember not to put out secret doors until a player searches for them.\nThe X's show where the players start the game.\nWhen it is your turn you may move any or all of the monsters that have been placed on the board.\nYou may not move monsters that have not yet been put out.\n\nWandering monster: Orc",
+  "width": 26,
+  "height": 19,
+  "cells": [
+    {
+      "x": "10",
+      "y": "1",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "10",
+          "y": "0"
+        },
+        {
+          "x": "10",
+          "y": "1"
+        }
+      ]
+    },
+    {
+      "x": "0",
+      "y": "0",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/special/X.png"
+    },
+    {
+      "x": "7",
+      "y": "2",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/monsters/Orc.png"
+    },
+    {
+      "x": "22",
+      "y": "6",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/monsters/Orc.png"
+    },
+    {
+      "x": "9",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/monsters/Orc.png"
+    },
+    {
+      "x": "16",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/monsters/Orc.png"
+    },
+    {
+      "x": "8",
+      "y": "11",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/monsters/Orc.png"
+    },
+    {
+      "x": "15",
+      "y": "14",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/monsters/Orc.png"
+    },
+    {
+      "x": "12",
+      "y": "1",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Large.png"
+    },
+    {
+      "x": "12",
+      "y": "17",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Large.png"
+    },
+    {
+      "x": "11",
+      "y": "6",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "0",
+      "y": "8",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "17",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "0",
+      "y": "10",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "9",
+      "y": "10",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "14",
+      "y": "12",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "10",
+      "y": "18",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/rubble/Small.png"
+    },
+    {
+      "x": "8",
+      "y": "5",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/traps/Trap%20Door.png"
+    },
+    {
+      "x": "3",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/traps/Trap%20Door.png",
+      "angle": 270
+    },
+    {
+      "x": "5",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/traps/Trap%20Door.png",
+      "angle": 90
+    },
+    {
+      "x": "16",
+      "y": "11",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/traps/Trap%20Door.png"
+    },
+    {
+      "x": "21",
+      "y": "5",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "20",
+          "y": "5"
+        },
+        {
+          "x": "21",
+          "y": "5"
+        }
+      ]
+    },
+    {
+      "x": "25",
+      "y": "6",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "24",
+          "y": "6"
+        },
+        {
+          "x": "25",
+          "y": "6"
+        }
+      ]
+    },
+    {
+      "x": "25",
+      "y": "0",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/special/X.png"
+    },
+    {
+      "x": "0",
+      "y": "18",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/special/X.png"
+    },
+    {
+      "x": "25",
+      "y": "18",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/special/X.png"
+    },
+    {
+      "x": "6",
+      "y": "18",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "6",
+          "y": "17"
+        },
+        {
+          "x": "6",
+          "y": "18"
+        }
+      ]
+    },
+    {
+      "x": "5",
+      "y": "13",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "5",
+          "y": "12"
+        },
+        {
+          "x": "5",
+          "y": "13"
+        }
+      ]
+    },
+    {
+      "x": "7",
+      "y": "11",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "6",
+          "y": "11"
+        },
+        {
+          "x": "7",
+          "y": "11"
+        }
+      ]
+    },
+    {
+      "x": "1",
+      "y": "12",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "0",
+          "y": "12"
+        },
+        {
+          "x": "1",
+          "y": "12"
+        }
+      ]
+    },
+    {
+      "x": "5",
+      "y": "6",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "4",
+          "y": "6"
+        },
+        {
+          "x": "5",
+          "y": "6"
+        }
+      ]
+    },
+    {
+      "x": "9",
+      "y": "3",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "8",
+          "y": "3"
+        },
+        {
+          "x": "9",
+          "y": "3"
+        }
+      ]
+    },
+    {
+      "x": "10",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "9",
+          "y": "9"
+        },
+        {
+          "x": "10",
+          "y": "9"
+        }
+      ]
+    },
+    {
+      "x": "16",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "15",
+          "y": "9"
+        },
+        {
+          "x": "16",
+          "y": "9"
+        }
+      ]
+    },
+    {
+      "x": "17",
+      "y": "13",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "17",
+          "y": "12"
+        },
+        {
+          "x": "17",
+          "y": "13"
+        }
+      ]
+    },
+    {
+      "x": "15",
+      "y": "18",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "15",
+          "y": "17"
+        },
+        {
+          "x": "15",
+          "y": "18"
+        }
+      ]
+    },
+    {
+      "x": "20",
+      "y": "10",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "20",
+          "y": "9"
+        },
+        {
+          "x": "20",
+          "y": "10"
+        }
+      ]
+    },
+    {
+      "x": "19",
+      "y": "9",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Door.png",
+      "cellSpan": [
+        {
+          "x": "19",
+          "y": "8"
+        },
+        {
+          "x": "19",
+          "y": "9"
+        }
+      ]
+    },
+    {
+      "x": "12",
+      "y": "8",
+      "src": "file:///C:/Users/zakth/Documents/HeroQuest/src/renderer/images/furniture/Stairs.png"
+    }
+  ]
+}
