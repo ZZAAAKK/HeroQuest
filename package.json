@@ -1,14 +1,13 @@
 {
   "name": "heroquest",
-  "title": "HeroQuest Map Editor",
+  "productName": "HeroQuest Companion",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "A companion app for the HeroQuest board game.",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder --win nsis --x64 --ia32 --publish never",
-    "dist:full": "node scripts/dist_full.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,7 +18,7 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "com.zzaaakk.heroquest",
+    "appId": "com.zzaaakk.heroquestcompanion",
     "files": [
       "src/**/*",
       "data/**/*"
