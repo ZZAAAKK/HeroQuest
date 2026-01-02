@@ -26,8 +26,8 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         run: npm ci
-      - name: Run build (dist:full)
-        run: npm run dist:full
+      - name: Run build (dist)
+        run: npm run dist
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
