@@ -3,11 +3,11 @@
   "productName": "HeroQuest Companion",
   "version": "1.0.0",
   "type": "module",
-  "description": "A companion app for the HeroQuest board game.",
+  "description": "",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win nsis --x64 --ia32 --publish never",
+    "dist": "electron-builder --win nsis --x64 --publish never",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,7 +18,7 @@
     "electron-builder": "^26.0.12"
   },
   "build": {
-    "appId": "com.zzaaakk.heroquestcompanion",
+    "appId": "com.zzaaakk.heroquest",
     "files": [
       "src/**/*",
       "data/**/*"

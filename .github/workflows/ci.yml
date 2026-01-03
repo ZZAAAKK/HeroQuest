@@ -28,11 +28,21 @@ jobs:
         run: npm ci
       - name: Run build (dist)
         run: npm run dist
-      - name: Upload build artifacts
+      - name: Remove unpacked build directories
+        if: always()
+        shell: pwsh
+        run: |
+          Write-Host "Removing unpacked build directories to keep artifacts small..."
+          if (Test-Path 'dist/win-unpacked') { Remove-Item -Recurse -Force 'dist/win-unpacked' }
+          if (Test-Path 'dist/win-ia32-unpacked') { Remove-Item -Recurse -Force 'dist/win-ia32-unpacked' }
+          Get-ChildItem -Path dist -Directory -Filter '*unpacked*' -ErrorAction SilentlyContinue | ForEach-Object { Remove-Item -Recurse -Force $_.FullName }
+      - name: Upload installer artifact(s)
         uses: actions/upload-artifact@v4
         with:
-          name: HeroQuest
-          path: dist/**
+          name: HeroQuest-installers
+          path: |
+            dist/*.exe
+            dist/*.msi
 
   release:
     name: Create Release for tag
