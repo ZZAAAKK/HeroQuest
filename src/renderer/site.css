@@ -21,8 +21,11 @@ body, input[type="text"] {
     margin: 0;
     padding: 0;
     background-color: var(--colour-background);
-    color: var(--colour-text);
     font-family: Arial, sans-serif;
+}
+
+input[type="text"] {
+    color: var(--colour-text);
 }
 
 input[type="text"]::placeholder {
