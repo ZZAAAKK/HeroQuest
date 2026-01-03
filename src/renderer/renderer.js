@@ -6,6 +6,17 @@ let isDragging = false;
     function applyBorders() {
         const app = document.getElementById('app');
 
+        try {
+            // On load, apply saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+            }
+        }
+        catch {
+            // ignore if DOM/window not available
+        }
+
         window.onkeyup = (e) => {
             if (e.key === 'x') {
                 const activeCells = document.querySelectorAll('div.cell.active');

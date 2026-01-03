@@ -6,6 +6,27 @@
     --cell-width: 32px;
     --cell-height: 32px;
     --cell-background: #fffcc7;
+    --colour-background: #ffffff;
+    --colour-text: #000000;
+    --colour-text-placeholder: #808080;
+}
+
+body[data-theme="dark"] {
+    --colour-background: #000000;
+    --colour-text: #ffffff;
+    --colour-text-placeholder: #bbbbbb;
+}
+
+body, input[type="text"] {
+    margin: 0;
+    padding: 0;
+    background-color: var(--colour-background);
+    color: var(--colour-text);
+    font-family: Arial, sans-serif;
+}
+
+input[type="text"]::placeholder {
+    color: var(--colour-text-placeholder);
 }
 
 #app {

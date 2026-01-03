@@ -26,7 +26,7 @@ function createWindow() {
 
     mainWindow.loadFile(path.join(__dirname, 'renderer/index.html'));
     createMenu(mainWindow);
-    // mainWindow.webContents.openDevTools(); // Open DevTools to capture preload console output
+    mainWindow.webContents.openDevTools(); // Open DevTools to capture preload console output
 }
 
 function createMenu(mainWindow) {
@@ -73,7 +73,7 @@ function createMenu(mainWindow) {
                         fs.writeFileSync(currentFilePath, data, 'utf-8');
                     }
                 },
-                { 
+                {
                     label: 'Save As...',
                     accelerator: 'CmdOrCtrl+Shift+S',
                     click: saveAs
@@ -82,6 +82,32 @@ function createMenu(mainWindow) {
                 {
                     label: 'Exit',
                     role: 'quit'
+                }
+            ]
+        },
+        {
+            label: 'View',
+            submenu: [
+                {
+                    label: 'Theme',
+                    submenu: [
+                        {
+                            label: 'Light',
+                            click: () => {
+                                mainWindow.webContents.send('theme:light');
+                            }
+                        },
+                        {
+                            label: 'Dark',
+                            click: () => {
+                                mainWindow.webContents.send('theme:dark');
+                            }
+                        }
+                    ]
+                },
+                { 
+                    label: 'Reload',
+                    role: 'reload' 
                 }
             ]
         }
@@ -104,6 +130,11 @@ async function saveAs() {
 
 ipcMain.handle('file:getData', async () => {
     return await mainWindow.webContents.executeJavaScript('window.api._getMapData()', true);
+});
+
+// Expose userData path to preload so preferences can be saved to disk
+ipcMain.handle('app:getUserDataPath', () => {
+    return app.getPath('userData');
 });
 
 app.whenReady().then(() => {
