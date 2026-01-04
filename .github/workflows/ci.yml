@@ -56,13 +56,9 @@ jobs:
         with:
           name: HeroQuest-installers
           path: ./artifact
-      - name: Unzip Installer Artifacts
-        run: |
-          mkdir extracted
-          unzip './artifact/*.zip' -d extracted
       - name: Create GitHub release and upload assets
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
           make_latest: true
-          files: extracted/*.exe
+          files: ./artifact/*.exe
