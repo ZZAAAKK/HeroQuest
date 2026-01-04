@@ -116,8 +116,16 @@ let isDragging = false;
                 activeCells.forEach(cell => {
                     const x = parseInt(cell.getAttribute('data-col'));
                     const y = parseInt(cell.getAttribute('data-row'));
-                    cell.classList.add('out-of-bounds');
-                    mapData.cells.push({ x: x, y: y, type: 'OutOfBounds' });
+                    cell.classList.toggle('out-of-bounds');
+
+                    if (mapData.cells.find(c => c.x === x && c.y === y)) {
+                        const filteredCells = mapData.cells.filter(c => c.x === x && c.y === y);
+                        mapData.cells = mapData.cells.filter(c => !filteredCells.includes(c));
+                    }
+                    else {
+                        mapData.cells.push({ x: x, y: y, type: 'OutOfBounds' });
+                    }
+
                     deactivateCell(cell);
                 });
             }
